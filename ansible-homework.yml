@@ -1,0 +1,13 @@
+---
+  - name: Apache
+    hosts: localhost
+    tasks:
+      - name: Installing apache
+        yum:
+          name: httpd
+          state: latest
+      - name: Starting and Enabling apache
+        systemd:
+          name: httpd
+          state: started
+          enabled: yes    
