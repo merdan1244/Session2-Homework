@@ -1,17 +1,14 @@
----
-    - name: Apache
-      hosts: localhost 
-      tasks:
-        - name: Installing apache
-          yum:
-            name: httpd
-            state: installed
-        - name: Activating to run apache
-          systemd: 
-            name: httpd
-            state: started
-        - name: Enabling apache
-          systemd:
-            name: httpd 
-            enabled: on
-        
+- name: Apache
+  hosts: localhost 
+  tasks:
+    - name: Installing Apache
+      yum:
+        name: httpd
+        state: latest
+      
+    - name: Starting and Enabling Apache
+      systemd:
+        name: httpd
+        state: started
+        enabled: true
+      
